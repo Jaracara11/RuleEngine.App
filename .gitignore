@@ -1,0 +1,8 @@
+# Folders
+.vs/
+bin/
+obj/
+PublishProfiles/
+
+# File Extensions
+*.sln

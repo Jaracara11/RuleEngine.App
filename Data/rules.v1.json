@@ -9,7 +9,7 @@
   {
     "RuleID": 2,
     "RuleName": "BulkOrderDiscount",
-    "Condition": "Items.Length > 10",
+    "Condition": "ItemCount > 10",
     "SuccessMessage": "Bulk order discount applied.",
     "FailureMessage": "Bulk order discount not applicable."
   }

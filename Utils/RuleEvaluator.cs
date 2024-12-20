@@ -2,6 +2,7 @@ using System.Text.Json;
 using System.Linq.Dynamic.Core;
 using RuleEngine.App.Models;
 using RuleEngine.App.Models.RuleModels;
+using RuleEngine.App.Models.RuleParameterModels;
 
 namespace RuleEngine.App.Utils
 {

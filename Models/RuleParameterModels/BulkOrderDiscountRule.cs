@@ -1,7 +1,7 @@
-namespace RuleEngine.App.Models.RuleModels
+namespace RuleEngine.App.Models.RuleParameterModels
 {
   public class BulkOrderDiscountRule : BaseRule
   {
-    public List<string> Items { get; set; } = [];
+    public int ItemCount { get; set; }
   }
 }

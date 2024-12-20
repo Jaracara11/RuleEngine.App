@@ -1,7 +1,7 @@
 using System.Net;
 using System.Text.Json;
 
-namespace RuleEngine.App.Utils
+namespace RuleEngine.App
 {
     public class ExceptionHandlerMiddleware(
         RequestDelegate next, ILogger<ExceptionHandlerMiddleware> logger)

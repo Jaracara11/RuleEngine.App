@@ -2,15 +2,30 @@
   {
     "RuleID": 1,
     "RuleName": "LargeTransactionRule",
-    "Condition": "Amount >= 10000 && Category == \"Purchase\"",
-    "SuccessMessage": "Transaction is large and valid for purchase.",
-    "FailureMessage": "Transaction does not meet the required criteria for large purchase."
+    "Subrules": [
+      {
+        "SubruleName": "Amount Condition",
+        "Condition": "Amount >= 10000",
+        "FailureMessage": "Amount is less than 10000."
+      },
+      {
+        "SubruleName": "Category Condition",
+        "Condition": "Category == \"Purchase\"",
+        "FailureMessage": "Category is not Purchase."
+      }
+    ],
+    "SuccessMessage": "Transaction is large and valid for purchase."
   },
   {
     "RuleID": 2,
     "RuleName": "BulkOrderDiscount",
-    "Condition": "ItemCount > 10",
-    "SuccessMessage": "Bulk order discount applied.",
-    "FailureMessage": "Bulk order discount not applicable."
+    "Subrules": [
+      {
+        "SubruleName": "ItemCount Condition",
+        "Condition": "ItemCount > 10",
+        "FailureMessage": "Item count is less than or equal to 10."
+      }
+    ],
+    "SuccessMessage": "Bulk order discount applied."
   }
 ]

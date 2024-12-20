@@ -1,4 +1,4 @@
-namespace RuleEngine.App.Models.RuleModels
+namespace RuleEngine.App.Models.RuleParameterModels
 {
   public class LargeTransactionRule : BaseRule
   {

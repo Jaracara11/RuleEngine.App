@@ -7,13 +7,13 @@ namespace RuleEngine.App.Models
     [JsonPropertyName("RuleName")]
     public required string RuleName { get; set; }
 
-    [JsonPropertyName("EvaluationResult")]
-    public bool EvaluationResult { get; set; }
-
     [JsonPropertyName("IsSuccess")]
     public bool IsSuccess { get; set; }
 
     [JsonPropertyName("Message")]
     public required string Message { get; set; }
+
+    [JsonPropertyName("SubruleResults")]
+    public List<SubruleEvaluationResult> SubruleResults { get; set; } = [];
   }
 }

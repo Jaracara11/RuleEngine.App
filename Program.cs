@@ -12,10 +12,20 @@ var rules = JsonSerializer.Deserialize<List<Rule>>(json) ?? [];
 builder.Services.AddSingleton(rules.Cast<BaseRule>().ToList());
 builder.Services.AddScoped<RequestHandlerV1>();
 
+builder.Services.AddCors(options =>
+{
+  options.AddDefaultPolicy(builder =>
+  {
+    builder.AllowAnyOrigin()
+             .WithMethods("POST")
+             .AllowAnyHeader();
+  });
+});
+
 var app = builder.Build();
 
 app.UseMiddleware<ExceptionHandlerMiddleware>();
-
+app.UseCors();
 app.MapPost("/v1/evaluate-rule", async (HttpContext httpContext, RequestHandlerV1 requestHandler) =>
 {
   return await requestHandler.HandleRuleEvaluationRequest(httpContext);

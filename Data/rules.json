@@ -1,0 +1,16 @@
+[
+  {
+    "RuleID": 1,
+    "RuleName": "LargeTransactionRule",
+    "Condition": "Amount > 10000 && Category == \"Purchase\"",
+    "SuccessMessage": "Transaction is large and valid for purchase.",
+    "FailureMessage": "Transaction does not meet the required criteria for large purchase."
+  },
+  {
+    "RuleID": 2,
+    "RuleName": "BulkOrderDiscount",
+    "Condition": "Items.Length > 10",
+    "SuccessMessage": "Bulk order discount applied.",
+    "FailureMessage": "Bulk order discount not applicable."
+  }
+]

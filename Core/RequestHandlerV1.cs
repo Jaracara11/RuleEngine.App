@@ -37,13 +37,17 @@ namespace RuleEngine.App.Core
       }
 
       var subruleResults = RuleEvaluator.EvaluateSubrules(requestVariables, rule.Subrules);
+
       var overallResult = subruleResults.All(x => x.EvaluationResult);
+      var failureMessages = subruleResults.Where(x => !x.EvaluationResult)
+                                           .Select(x => x.Message)
+                                           .ToList();
 
       var result = new RuleEvaluationResult
       {
         RuleName = rule.RuleName,
         IsSuccess = overallResult,
-        Message = overallResult ? rule.SuccessMessage : rule.FailureMessage,
+        Message = failureMessages.Count > 0 ? string.Join(", ", failureMessages) : rule.SuccessMessage,
         SubruleResults = subruleResults
       };
 

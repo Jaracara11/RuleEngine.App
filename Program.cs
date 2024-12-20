@@ -4,11 +4,11 @@ using RuleEngine.App.Utils;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var rulesFilePath = Path.Combine(AppContext.BaseDirectory, "Data", "rules.json");
+var rulesFilePath = Path.Combine(AppContext.BaseDirectory, "Data", "rules.v1.json");
 var json = File.ReadAllText(rulesFilePath);
 var rules = JsonSerializer.Deserialize<List<Rule>>(json) ?? [];
 
-builder.Services.AddSingleton<List<BaseRule>>(rules.Cast<BaseRule>().ToList());
+builder.Services.AddSingleton(rules.Cast<BaseRule>().ToList());
 builder.Services.AddScoped<RequestHandlerV1>();
 
 var app = builder.Build();

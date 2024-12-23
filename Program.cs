@@ -26,6 +26,12 @@ var app = builder.Build();
 
 app.UseMiddleware<ExceptionHandlerMiddleware>();
 app.UseCors();
+
+app.MapGet("/v1/rules", () =>
+{
+  return Results.Ok(rules);
+});
+
 app.MapPost("/v1/evaluate-rule", async (HttpContext httpContext, RequestHandlerV1 requestHandler) =>
 {
   return await requestHandler.HandleRuleEvaluationRequest(httpContext);

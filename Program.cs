@@ -4,9 +4,8 @@ using RuleEngine.App.Core;
 using RuleEngine.App;
 
 var builder = WebApplication.CreateBuilder(args);
-
-var rulesFilePath = Path.Combine(AppContext.BaseDirectory, "Data", "rules.v1.json");
-var json = File.ReadAllText(rulesFilePath);
+var rulesFilePath = builder.Configuration["RulesV1FilePath"];
+var json = File.ReadAllText(rulesFilePath ?? string.Empty);
 var rules = JsonSerializer.Deserialize<List<Rule>>(json) ?? [];
 
 builder.Services.AddSingleton(rules.Cast<BaseRule>().ToList());
@@ -14,16 +13,15 @@ builder.Services.AddScoped<RequestHandlerV1>();
 
 builder.Services.AddCors(options =>
 {
-  options.AddDefaultPolicy(builder =>
-  {
-    builder.AllowAnyOrigin()
-             .WithMethods("POST")
-             .AllowAnyHeader();
-  });
+  options.AddPolicy("CorsPolicy",
+      builder => builder.AllowAnyOrigin()
+                        .WithMethods("POST", "GET")
+                        .WithHeaders("Content-Type", "Accept"));
 });
 
 var app = builder.Build();
 
+app.UseCors("CorsPolicy");
 app.UseMiddleware<ExceptionHandlerMiddleware>();
 app.UseCors();
 

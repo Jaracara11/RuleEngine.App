@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-
 namespace RuleEngine.App.Models
 {
   public abstract class BaseRule

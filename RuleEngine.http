@@ -1,4 +1,4 @@
-### Get Rule Examples
+### Get All Rules
 GET http://localhost:5000/v1/rules
 
 ### Evaluate Rule (LargeTransactionRule)

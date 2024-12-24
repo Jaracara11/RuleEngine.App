@@ -37,7 +37,7 @@ namespace RuleEngine.App
             var response = new
             {
                 context.Response.StatusCode,
-                ex.Message
+                Message = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Development" ? ex.Message : "An error occurred."
             };
 
             var jsonResponse = JsonSerializer.Serialize(response);

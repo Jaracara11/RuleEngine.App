@@ -3,6 +3,9 @@
 bin/
 obj/
 PublishProfiles/
+publish/
 
 # File Extensions
 *.sln
+*.bat
+*.bash

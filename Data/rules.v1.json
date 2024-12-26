@@ -18,7 +18,7 @@
   },
   {
     "RuleID": 2,
-    "RuleName": "BulkOrderDiscount",
+    "RuleName": "BulkOrderDiscountRule",
     "Subrules": [
       {
         "SubruleName": "ItemCount Condition",
@@ -27,5 +27,17 @@
       }
     ],
     "SuccessMessage": "Bulk order discount applied."
+  },
+  {
+    "RuleID": 3,
+    "RuleName": "BooleanCheckRule",
+    "Subrules": [
+      {
+        "SubruleName": "Boolean Condition Evaluation",
+        "Condition": "IsFlagEnabled == true",
+        "FailureMessage": "[{\"Key\": \"AltOption1\", \"Value\": \"AltValue1\"}, {\"Key\": \"AltOption2\", \"Value\": \"AltValue2\"}]"
+      }
+    ],
+    "SuccessMessage": "[{\"Key\": \"Option1\", \"Value\": \"Value1\"}, {\"Key\": \"Option2\", \"Value\": \"Value2\"}]"
   }
 ]

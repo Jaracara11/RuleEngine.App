@@ -7,12 +7,13 @@ namespace RuleEngine.App.Core
 {
   public static class RuleEvaluator
   {
-    public static object? DeserializeRequestVariables(RuleName ruleName, string requestVariablesJson)
+    public static object? DeserializeRequestVariables(RuleNameEnum ruleName, string requestVariablesJson)
     {
       return ruleName switch
       {
-        RuleName.LargeTransactionRule => JsonSerializer.Deserialize<LargeTransactionRule>(requestVariablesJson),
-        RuleName.BulkOrderDiscount => JsonSerializer.Deserialize<BulkOrderDiscountRule>(requestVariablesJson),
+        RuleNameEnum.LargeTransactionRule => JsonSerializer.Deserialize<LargeTransactionRule>(requestVariablesJson),
+        RuleNameEnum.BulkOrderDiscountRule => JsonSerializer.Deserialize<BulkOrderDiscountRule>(requestVariablesJson),
+        RuleNameEnum.BooleanCheckRule => JsonSerializer.Deserialize<BooleanCheckRule>(requestVariablesJson),
         _ => null
       };
     }

@@ -1,8 +1,12 @@
-### Get All Rules
-GET http://localhost:5000/v1/rules
+@apiUrlProd = http://rule-engine.runasp.net/v1
+@apiUrlDev = http://localhost:5000/v1
+@apiUrl = {{apiUrlDev}}
 
-### Evaluate Rule (LargeTransactionRule)
-POST http://localhost:5000/v1/evaluate-rule
+### Get All Rules
+GET {{apiUrl}}/rules
+
+### Evaluate Rule (LargeTransaction)
+POST {{apiUrl}}/evaluate-rule
 Content-Type: application/json
 
 {
@@ -14,12 +18,23 @@ Content-Type: application/json
 }
 
 ### Evaluate Rule (BulkOrderDiscount)
-POST http://localhost:5000/v1/evaluate-rule
+POST {{apiUrl}}/evaluate-rule
 Content-Type: application/json
 
 {
-  "RuleName": "BulkOrderDiscount",
+  "RuleName": "BulkOrderDiscountRule",
   "RequestVariables": {
     "ItemCount": 15
+  }
+}
+
+### Evaluate Rule (BooleanCheck)
+POST {{apiUrl}}/evaluate-rule
+Content-Type: application/json
+
+{
+  "RuleName": "BooleanCheckRule",
+  "RequestVariables": {
+    "IsFlagEnabled": true
   }
 }

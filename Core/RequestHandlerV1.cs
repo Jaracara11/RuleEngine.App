@@ -16,7 +16,7 @@ namespace RuleEngine.App.Core
         return Results.BadRequest(new { Error = "Invalid request data: Ensure RuleName and RequestVariables are provided." });
       }
 
-      if (!Enum.TryParse<RuleName>(requestBody.RuleName, ignoreCase: true, out var ruleName))
+      if (!Enum.TryParse<RuleNameEnum>(requestBody.RuleName, ignoreCase: true, out var ruleName))
       {
         return Results.BadRequest(new { Error = $"Invalid RuleName '{requestBody.RuleName}'. Ensure the value is a valid enum." });
       }
